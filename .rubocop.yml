@@ -1,0 +1,8 @@
+inherit_from: .rubocop_todo.yml
+
+inherit_gem:
+  carwow_rubocop:
+    - default.yml
+
+RSpec/NestedGroups:
+  Max: 5
