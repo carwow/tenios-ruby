@@ -1,6 +1,61 @@
 # Tenios
 
-TODO: Delete this and the text above, and describe your gem
+Wraps [Tenios Call Control](https://www.tenios.de/en/doc/api-spec) blocks in ruby.
+Each accepted block has a corresponding object under `Tenios::Blocks`, currently these are:
+- `Tenios::Blocks::Announcement`
+- `Tenios::Blocks::Bridge`
+- `Tenios::Blocks::CollectDigits`
+- `Tenios::Blocks::CollectSpeech`
+- `Tenios::Blocks::HangUp`
+- `Tenios::Blocks::RoutingPlan`
+- `Tenios::Blocks::Say`
+
+Each of these can be used as part of a `Tenios::Blocks` object, by using `Tenios::Blocks#add`.
+
+`Tenios::Blocks` implements `#as_json` which returns a JSON-like hash (although with symbolised keys).
+
+In rails you can pass the `Tenios::Blocks` object directly to `render` under the `json:` key.
+
+```ruby
+require 'tenios'
+
+class TeniosController < ApplicationController
+  def empty_response
+    announcement = Tenios::Blocks::Announcement.new(announcement: 'redirect', standard: false)
+    bridge = Tenios::Blocks::Bridge.new(mode: Tenios::Blocks::Bridge::SEQUENTIAL) do |redirect|
+      redirect.with_destination(Tenios::Blocks::Bridge::EXTERNAL_NUMBER, '+440123456789', 10)
+    end
+
+    blocks = Tenios::Blocks.new do |response|
+      response.add(announcement)
+      response.add(bridge)
+    end
+
+    render json: blocks
+  end
+end
+```
+
+Else you can use any JSON serializer that can deal with a ruby `Hash`
+
+```ruby
+require 'json'
+require 'tenios'
+
+announcement = Tenios::Blocks::Announcement.new(announcement: 'redirect', standard: false)
+bridge =
+  Tenios::Blocks::Bridge
+  .new(mode: Tenios::Blocks::Bridge::SEQUENTIAL)
+  .with_destination(Tenios::Blocks::Bridge::EXTERNAL_NUMBER, '+440123456789', 10)
+
+Tenios::Blocks.new
+.add(announcement)
+.add(bridge)
+.as_json
+.yield_self { |hash| JSON.generate(hash) }
+```
+
+As you may have noticed in the exampled above you can both chain calls to `Tenios::Blocks#add` and `Tenios::Blocks::Bridge#with_destination` or pass a block to those initialisers. :man_shrugging: whatever floats your boat.
 
 ## Installation
 
@@ -17,16 +72,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install tenios
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
