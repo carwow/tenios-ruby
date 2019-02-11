@@ -20,7 +20,7 @@ In rails you can pass the `Tenios::Blocks` object directly to `render` under the
 require 'tenios'
 
 class TeniosController < ApplicationController
-  def empty_response
+  def redirect_to_number
     announcement = Tenios::Blocks::Announcement.new(announcement: 'redirect', standard: false)
     bridge = Tenios::Blocks::Bridge.new(mode: Tenios::Blocks::Bridge::SEQUENTIAL) do |redirect|
       redirect.with_destination(Tenios::Blocks::Bridge::EXTERNAL_NUMBER, '+440123456789', 10)
