@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version       = Tenios::VERSION
   spec.authors       = ['carwow Developers']
   spec.email         = ['developers@carwow.co.uk']
-  spec.summary       = ''
+  spec.summary       = 'A ruby wrapper for Tenios Call Control API'
   spec.homepage      = 'https://github.com/carwow/tenios-ruby'
   spec.license       = 'MIT'
 
@@ -27,7 +27,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'carwow_rubocop'
-  spec.add_development_dependency 'libhoney'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
 end
