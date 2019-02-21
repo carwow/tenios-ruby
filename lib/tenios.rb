@@ -13,5 +13,11 @@
 ].each { |f| require f }
 
 module Tenios
-  class Error < StandardError; end
+  def self.blocks
+    blocks = Blocks.new
+
+    yield(blocks) if block_given?
+
+    blocks
+  end
 end
