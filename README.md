@@ -21,14 +21,11 @@ require 'tenios'
 
 class TeniosController < ApplicationController
   def redirect_to_number
-    announcement = Tenios::Blocks::Announcement.new(announcement: 'redirect', standard: false)
-    bridge = Tenios::Blocks::Bridge.new(mode: Tenios::Blocks::Bridge::SEQUENTIAL) do |redirect|
-      redirect.with_destination(Tenios::Blocks::Bridge::EXTERNAL_NUMBER, '+440123456789', 10)
-    end
-
-    blocks = Tenios::Blocks.new do |response|
-      response.add(announcement)
-      response.add(bridge)
+    blocks = Tenios.blocks do |block|
+      block.announce(announcement: 'redirect', standard: false)
+      block.bridge(mode: Tenios::Blocks::Bridge::SEQUENTIAL) do |bridge|
+        bridge.with_destination(Tenios::Blocks::Bridge::EXTERNAL_NUMBER, '+440123456789', 10)
+      end
     end
 
     render json: blocks
@@ -54,8 +51,6 @@ Tenios::Blocks.new
 .as_json
 .yield_self { |hash| JSON.generate(hash) }
 ```
-
-As you may have noticed in the exampled above you can both chain calls to `Tenios::Blocks#add` and `Tenios::Blocks::Bridge#with_destination` or pass a block to those initialisers. :man_shrugging: whatever floats your boat.
 
 ## Installation
 
