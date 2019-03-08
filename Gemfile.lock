@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tenios (0.1.0)
+    tenios (0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -48,7 +48,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.0)
+  bundler (< 2.0)
   carwow_rubocop
   rake
   rspec
