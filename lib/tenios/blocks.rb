@@ -34,6 +34,14 @@ module Tenios
       add(block)
     end
 
+    def call_settings(forward_ani:)
+      block = CallSettings.new(
+        forward_ani: forward_ani
+      )
+
+      add(block)
+    end
+
     def collect_digits(
       announcement:,
       standard_announcement:,

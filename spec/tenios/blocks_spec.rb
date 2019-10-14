@@ -65,6 +65,23 @@ RSpec.describe Tenios::Blocks do
     end
   end
 
+  describe '#call_settings' do
+    it 'adds a call_settings block' do
+      instance.call_settings(
+        forward_ani: '+123'
+      )
+
+      call_settings = Tenios::Blocks::CallSettings.new(
+        forward_ani: '+123'
+      )
+
+      blocks = described_class.new
+      blocks.add(call_settings)
+
+      expect(instance.as_json).to eq(blocks.as_json)
+    end
+  end
+
   describe '#collect_digits' do
     it 'adds a collect_digits block' do
       instance.collect_digits(
