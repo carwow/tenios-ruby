@@ -48,11 +48,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (< 2.0)
+  bundler (~> 2)
   carwow_rubocop
   rake
   rspec
   tenios!
 
 BUNDLED WITH
-   1.17.3
+   2.0.2
