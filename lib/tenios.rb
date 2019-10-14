@@ -5,6 +5,7 @@
   tenios/blocks
   tenios/blocks/announcement
   tenios/blocks/bridge
+  tenios/blocks/call_settings
   tenios/blocks/collect_digits
   tenios/blocks/collect_speech
   tenios/blocks/hang_up
