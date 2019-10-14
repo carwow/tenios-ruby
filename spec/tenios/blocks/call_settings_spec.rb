@@ -8,7 +8,7 @@ RSpec.describe Tenios::Blocks::CallSettings do
     }
   end
 
-  describe 'as_json' do
+  describe '#as_json' do
     subject(:json) { instance.as_json }
 
     let(:params) { valid_params }
