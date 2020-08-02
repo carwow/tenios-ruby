@@ -201,9 +201,9 @@ RSpec.describe Tenios::Blocks::Bridge do
 
         it 'returns a valid block' do
           instance
-          .with_destination(described_class::EXTERNAL_NUMBER, '+0123456890', 10)
-          .with_destination(described_class::SIP_USER, 'beep', 11)
-          .with_destination(described_class::SIP_TRUNK, 'boop', 12)
+            .with_destination(described_class::EXTERNAL_NUMBER, '+0123456890', 10)
+            .with_destination(described_class::SIP_USER, 'beep', 11)
+            .with_destination(described_class::SIP_TRUNK, 'boop', 12)
 
           expect(json).to eq(expected_json)
         end
@@ -235,9 +235,9 @@ RSpec.describe Tenios::Blocks::Bridge do
 
         it 'returns a valid block' do
           instance
-          .with_destination(described_class::EXTERNAL_NUMBER, '+0123456890')
-          .with_destination(described_class::SIP_USER, 'beep')
-          .with_destination(described_class::SIP_TRUNK, 'boop')
+            .with_destination(described_class::EXTERNAL_NUMBER, '+0123456890')
+            .with_destination(described_class::SIP_USER, 'beep')
+            .with_destination(described_class::SIP_TRUNK, 'boop')
 
           expect(json).to eq(expected_json)
         end

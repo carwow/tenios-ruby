@@ -29,8 +29,8 @@ RSpec.describe Tenios::Blocks do
 
     it 'returns blocks' do
       instance
-      .add(block_1)
-      .add(block_2)
+        .add(block_1)
+        .add(block_2)
 
       expect(json).to eq(expected_json)
     end
