@@ -1,0 +1,17 @@
+module Tenios
+  class Blocks
+    class CollectDigits
+      BLOCK_TYPE: ::String
+
+      VARIABLE_REGEX: untyped
+
+      TERMINATORS: untyped
+
+      def initialize: (announcement: untyped announcement, standard_announcement: untyped standard_announcement, error_announcement: untyped error_announcement, standard_error_announcement: untyped standard_error_announcement, variable: untyped variable, min_digits: untyped min_digits, max_digits: untyped max_digits, terminator: untyped terminator, max_tries: untyped max_tries, timeout: untyped timeout) -> untyped
+
+      def as_json: () -> { blockType: untyped, standardAnnouncement: untyped, announcementName: untyped, standardErrorAnnouncement: untyped, errorAnnouncementName: untyped, variableName: untyped, minDigits: untyped, maxDigits: untyped, terminator: untyped, :timeout => untyped, maxTries: untyped }
+
+      def validate!: () -> untyped
+    end
+  end
+end

@@ -1,0 +1,25 @@
+module Tenios
+  class Blocks
+    def initialize: () { (untyped) -> untyped } -> untyped
+
+    def add: (untyped block) -> untyped
+
+    def announce: (announcement: untyped announcement, ?standard: bool standard) -> untyped
+
+    def bridge: (mode: untyped mode, ?timeout: untyped? timeout) { (untyped) -> untyped } -> untyped
+
+    def call_settings: (forward_ani: untyped forward_ani) -> untyped
+
+    def collect_digits: (announcement: untyped announcement, standard_announcement: untyped standard_announcement, error_announcement: untyped error_announcement, standard_error_announcement: untyped standard_error_announcement, variable: untyped variable, min_digits: untyped min_digits, max_digits: untyped max_digits, terminator: untyped terminator, max_tries: untyped max_tries, timeout: untyped timeout) -> untyped
+
+    def collect_speech: (announcement: untyped announcement, missing_input_announcement: untyped missing_input_announcement, language: untyped language, variable: untyped variable, max_tries: untyped max_tries) -> untyped
+
+    def hang_up: (cause: untyped cause) -> untyped
+
+    def routing_plan: (routing_plan: untyped routing_plan) -> untyped
+
+    def say: (text: untyped text, voice: untyped voice, ssml: untyped ssml) -> untyped
+
+    def as_json: () -> { blocks: untyped }
+  end
+end

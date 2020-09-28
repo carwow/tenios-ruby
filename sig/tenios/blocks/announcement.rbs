@@ -1,0 +1,11 @@
+module Tenios
+  class Blocks
+    class Announcement
+      BLOCK_TYPE: ::String
+
+      def initialize: (announcement: untyped announcement, ?standard: bool standard) -> untyped
+
+      def as_json: () -> { blockType: untyped, standardAnnouncement: untyped, announcementName: untyped }
+    end
+  end
+end

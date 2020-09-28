@@ -1,0 +1,5 @@
+module Tenios
+  VERSION: ::String
+
+  def self.blocks: () -> Tenios::Blocks
+end

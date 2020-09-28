@@ -1,0 +1,31 @@
+module Tenios
+  class Blocks
+    class Bridge
+      BLOCK_TYPE: ::String
+
+      SEQUENTIAL: ::String
+
+      PARALLEL: ::String
+
+      EXTERNAL_NUMBER: ::String
+
+      SIP_USER: ::String
+
+      SIP_TRUNK: ::String
+
+      BRIDGE_MODES: untyped
+
+      DESTINATION_TYPES: untyped
+
+      def initialize: (mode: untyped mode, ?timeout: untyped? timeout) { (untyped) -> untyped } -> untyped
+
+      def with_destination: (untyped destination_type, untyped destination, ?untyped? timeout) -> untyped
+
+      def as_json: () -> untyped
+
+      def sequential?: () -> untyped
+
+      def parallel?: () -> untyped
+    end
+  end
+end

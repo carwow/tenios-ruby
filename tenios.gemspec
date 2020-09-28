@@ -28,5 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 2'
   spec.add_development_dependency 'carwow_rubocop'
   spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rbs'
   spec.add_development_dependency 'rspec'
 end
