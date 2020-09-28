@@ -1,25 +1,51 @@
 module Tenios
   class Blocks
-    def initialize: () { (untyped) -> untyped } -> untyped
+    type block = Tenios::Blocks::Announcement
+               | Tenios::Blocks::Bridge
+               | Tenios::Blocks::CallSettings
+               | Tenios::Blocks::CollectDigits
+               | Tenios::Blocks::CollectSpeech
+               | Tenios::Blocks::HangUp
+               | Tenios::Blocks::RoutingPlan
+               | Tenios::Blocks::Say
 
-    def add: (untyped block) -> untyped
+    def initialize: () { (block) -> void } -> Blocks
 
-    def announce: (announcement: untyped announcement, ?standard: bool standard) -> untyped
+    def add: (block block) -> Blocks
 
-    def bridge: (mode: untyped mode, ?timeout: untyped? timeout) { (untyped) -> untyped } -> untyped
+    def announce: (announcement: String announcement, ?standard: bool standard) -> Blocks
 
-    def call_settings: (forward_ani: untyped forward_ani) -> untyped
+    def bridge: (mode: String mode, ?timeout: Integer? timeout) { (Bridge) -> void } -> Blocks
 
-    def collect_digits: (announcement: untyped announcement, standard_announcement: untyped standard_announcement, error_announcement: untyped error_announcement, standard_error_announcement: untyped standard_error_announcement, variable: untyped variable, min_digits: untyped min_digits, max_digits: untyped max_digits, terminator: untyped terminator, max_tries: untyped max_tries, timeout: untyped timeout) -> untyped
+    def call_settings: (forward_ani: String forward_ani) -> Blocks
 
-    def collect_speech: (announcement: untyped announcement, missing_input_announcement: untyped missing_input_announcement, language: untyped language, variable: untyped variable, max_tries: untyped max_tries) -> untyped
+    def collect_digits: (
+      announcement: String announcement,
+      standard_announcement: bool standard_announcement,
+      error_announcement: String error_announcement,
+      standard_error_announcement: (TrueClass | FalseClass) standard_error_announcement,
+      variable: String variable,
+      min_digits: Integer min_digits,
+      max_digits: Integer max_digits,
+      terminator: String terminator,
+      max_tries: Integer max_tries,
+      timeout: Integer timeout
+    ) -> Blocks
 
-    def hang_up: (cause: untyped cause) -> untyped
+    def collect_speech: (
+      announcement: String announcement,
+      missing_input_announcement: (TrueClass | FalseClass) missing_input_announcement,
+      language: String language,
+      variable: String variable,
+      max_tries: Integer max_tries
+    ) -> Blocks
 
-    def routing_plan: (routing_plan: untyped routing_plan) -> untyped
+    def hang_up: (cause: String cause) -> Blocks
 
-    def say: (text: untyped text, voice: untyped voice, ssml: untyped ssml) -> untyped
+    def routing_plan: (routing_plan: String routing_plan) -> Blocks
 
-    def as_json: () -> { blocks: untyped }
+    def say: (text: String text, voice: String voice, ssml: bool ssml) -> Blocks
+
+    def as_json: () -> { blocks: Array[untyped] }
   end
 end

@@ -6,7 +6,7 @@ RSpec.describe Tenios::Blocks do
   describe '#add' do
     subject(:add) { instance.add(block) }
 
-    let(:block) { 'hello' }
+    let(:block) { Tenios::Blocks::CallSettings.new(forward_ani: '0123456789') }
 
     it 'returns self' do
       expect(add).to be_a(described_class)
@@ -16,8 +16,8 @@ RSpec.describe Tenios::Blocks do
   describe '#as_json' do
     subject(:json) { instance.as_json }
 
-    let(:block_1) { instance_double('Tenios::Blocks', as_json: 'block_1') }
-    let(:block_2) { instance_double('Tenios::Blocks', as_json: 'block_2') }
+    let(:block_1) { instance_double('Tenios::Blocks::CollectDigits', as_json: 'block_1') }
+    let(:block_2) { instance_double('Tenios::Blocks::Announcement', as_json: 'block_2') }
     let(:expected_json) do
       {
         blocks: %w[

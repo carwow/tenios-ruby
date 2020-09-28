@@ -1,17 +1,28 @@
 module Tenios
   class Blocks
     class CollectDigits
-      BLOCK_TYPE: ::String
+      BLOCK_TYPE: String
 
-      VARIABLE_REGEX: untyped
+      VARIABLE_REGEX: Regexp
 
-      TERMINATORS: untyped
+      TERMINATORS: Array[String]
 
-      def initialize: (announcement: untyped announcement, standard_announcement: untyped standard_announcement, error_announcement: untyped error_announcement, standard_error_announcement: untyped standard_error_announcement, variable: untyped variable, min_digits: untyped min_digits, max_digits: untyped max_digits, terminator: untyped terminator, max_tries: untyped max_tries, timeout: untyped timeout) -> untyped
+      def initialize: (
+        announcement: String announcement,
+        standard_announcement: (TrueClass | FalseClass) standard_announcement,
+        error_announcement: String error_announcement,
+        standard_error_announcement: (TrueClass | FalseClass) standard_error_announcement,
+        variable: String variable,
+        min_digits: Integer min_digits,
+        max_digits: Integer max_digits,
+        terminator: String terminator,
+        max_tries: Integer max_tries,
+        timeout: Integer timeout
+      ) -> CollectDigits
 
-      def as_json: () -> { blockType: untyped, standardAnnouncement: untyped, announcementName: untyped, standardErrorAnnouncement: untyped, errorAnnouncementName: untyped, variableName: untyped, minDigits: untyped, maxDigits: untyped, terminator: untyped, :timeout => untyped, maxTries: untyped }
+      def as_json: () -> Hash[Symbol, String | Integer | (TrueClass | FalseClass)]
 
-      def validate!: () -> untyped
+      def validate!: () -> void
     end
   end
 end

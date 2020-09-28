@@ -1,73 +1,73 @@
 module Tenios
   class Blocks
     class HangUp
-      BLOCK_TYPE: ::String
+      BLOCK_TYPE: String
 
-      UNALLOCATED_NUMBER: ::String
+      UNALLOCATED_NUMBER: String
 
-      NO_ROUTE_TRANSIT_NET: ::String
+      NO_ROUTE_TRANSIT_NET: String
 
-      NO_ROUTE_DESTINATION: ::String
+      NO_ROUTE_DESTINATION: String
 
-      USER_BUSY: ::String
+      USER_BUSY: String
 
-      NO_USER_RESPONSE: ::String
+      NO_USER_RESPONSE: String
 
-      NO_ANSWER: ::String
+      NO_ANSWER: String
 
-      SUBSCRIBER_ABSENT: ::String
+      SUBSCRIBER_ABSENT: String
 
-      CALL_REJECTED: ::String
+      CALL_REJECTED: String
 
-      NUMBER_CHANGED: ::String
+      NUMBER_CHANGED: String
 
-      REDIRECTION_TO_NEW_DESTINATION: ::String
+      REDIRECTION_TO_NEW_DESTINATION: String
 
-      EXCHANGE_ROUTING_ERROR: ::String
+      EXCHANGE_ROUTING_ERROR: String
 
-      DESTINATION_OUT_OF_ORDER: ::String
+      DESTINATION_OUT_OF_ORDER: String
 
-      INVALID_NUMBER_FORMAT: ::String
+      INVALID_NUMBER_FORMAT: String
 
-      FACILITY_REJECTED: ::String
+      FACILITY_REJECTED: String
 
-      NORMAL_UNSPECIFIED: ::String
+      NORMAL_UNSPECIFIED: String
 
-      NORMAL_CIRCUIT_CONGESTION: ::String
+      NORMAL_CIRCUIT_CONGESTION: String
 
-      NETWORK_OUT_OF_ORDER: ::String
+      NETWORK_OUT_OF_ORDER: String
 
-      NORMAL_TEMPORARY_FAILURE: ::String
+      NORMAL_TEMPORARY_FAILURE: String
 
-      SWITCH_CONGESTION: ::String
+      SWITCH_CONGESTION: String
 
-      REQUESTED_CHAN_UNAVAIL: ::String
+      REQUESTED_CHAN_UNAVAIL: String
 
-      OUTGOING_CALL_BARRED: ::String
+      OUTGOING_CALL_BARRED: String
 
-      INCOMING_CALL_BARRED: ::String
+      INCOMING_CALL_BARRED: String
 
-      BEARERCAPABILITY_NOTAUTH: ::String
+      BEARERCAPABILITY_NOTAUTH: String
 
-      BEARERCAPABILITY_NOTAVAIL: ::String
+      BEARERCAPABILITY_NOTAVAIL: String
 
-      BEARERCAPABILITY_NOTIMPL: ::String
+      BEARERCAPABILITY_NOTIMPL: String
 
-      FACILITY_NOT_IMPLEMENTED: ::String
+      FACILITY_NOT_IMPLEMENTED: String
 
-      SERVICE_NOT_IMPLEMENTED: ::String
+      SERVICE_NOT_IMPLEMENTED: String
 
-      INCOMPATIBLE_DESTINATION: ::String
+      INCOMPATIBLE_DESTINATION: String
 
-      RECOVERY_ON_TIMER_EXPIRE: ::String
+      RECOVERY_ON_TIMER_EXPIRE: String
 
-      ORIGINATOR_CANCEL: ::String
+      ORIGINATOR_CANCEL: String
 
-      CAUSES: untyped
+      CAUSES: Array[String]
 
-      def initialize: (cause: untyped cause) -> untyped
+      def initialize: (cause: String cause) -> HangUp
 
-      def as_json: () -> { blockType: untyped, hangupCause: untyped }
+      def as_json: () -> { blockType: String, hangupCause: String }
     end
   end
 end

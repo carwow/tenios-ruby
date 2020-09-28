@@ -1,11 +1,11 @@
 module Tenios
   class Blocks
     class RoutingPlan
-      BLOCK_TYPE: ::String
+      BLOCK_TYPE: String
 
-      def initialize: (routing_plan: untyped routing_plan) -> untyped
+      def initialize: (routing_plan: String routing_plan) -> RoutingPlan
 
-      def as_json: () -> { blockType: untyped, routingplanName: untyped }
+      def as_json: () -> { blockType: String, routingplanName: String }
     end
   end
 end

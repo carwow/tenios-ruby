@@ -1,11 +1,11 @@
 module Tenios
   class Blocks
     class Announcement
-      BLOCK_TYPE: ::String
+      BLOCK_TYPE: String
 
-      def initialize: (announcement: untyped announcement, ?standard: bool standard) -> untyped
+      def initialize: (announcement: String announcement, ?standard: bool standard) -> Announcement
 
-      def as_json: () -> { blockType: untyped, standardAnnouncement: untyped, announcementName: untyped }
+      def as_json: () -> { blockType: String, standardAnnouncement: TrueClass | FalseClass, announcementName: String }
     end
   end
 end

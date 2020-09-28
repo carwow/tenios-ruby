@@ -1,11 +1,26 @@
 module Tenios
   class Blocks
     class CollectSpeech
-      BLOCK_TYPE: ::String
+      BLOCK_TYPE: String
 
-      def initialize: (announcement: untyped announcement, missing_input_announcement: untyped missing_input_announcement, language: untyped language, variable: untyped variable, max_tries: untyped max_tries) -> untyped
+      def initialize: (
+        announcement: String announcement,
+        missing_input_announcement: String missing_input_announcement,
+        language: String language,
+        variable: String variable,
+        max_tries: Integer max_tries
+      ) -> CollectSpeech
 
-      def as_json: () -> { blockType: untyped, standardAnnouncement: ::FalseClass, announcementName: untyped, standardMissingInputAnnouncement: ::FalseClass, missingInputAnnouncementName: untyped, language: untyped, variableName: untyped, maxTries: untyped }
+      def as_json: () -> {
+        blockType: String,
+        standardAnnouncement: FalseClass,
+        announcementName: String,
+        standardMissingInputAnnouncement: FalseClass,
+        missingInputAnnouncementName: String,
+        language: String,
+        variableName: String,
+        maxTries: Integer
+      }
     end
   end
 end

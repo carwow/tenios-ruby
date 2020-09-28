@@ -1,13 +1,13 @@
 module Tenios
   class Blocks
     class Say
-      BLOCK_TYPE: ::String
+      BLOCK_TYPE: String
 
-      def initialize: (text: untyped text, voice: untyped voice, ssml: untyped ssml) -> untyped
+      def initialize: (text: String text, voice: String voice, ssml: bool ssml) -> Say
 
-      def as_json: () -> { blockType: untyped, text: untyped, voiceName: untyped, useSsml: untyped }
+      def as_json: () -> { blockType: String, text: String, voiceName: String, useSsml: TrueClass | FalseClass }
 
-      def validate!: () -> untyped
+      def validate!: () -> void
     end
   end
 end

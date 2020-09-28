@@ -1,5 +1,5 @@
 ruby: &ruby
-  image: carwow/ruby-ci:2.6
+  image: rubylang/ruby:3.0.0-preview1-bionic
 
 version: 2
 
@@ -23,6 +23,25 @@ jobs:
       - persist_to_workspace:
           root: '~'
           paths: [tenios-ruby]
+
+  rbs_validate:
+    working_directory: ~/tenios-ruby
+    docker:
+      - *ruby
+    steps:
+      - attach_workspace:
+          at: '~'
+      - run: bundle exec rbs -I sig validate
+
+  rbs_test:
+    working_directory: ~/tenios-ruby
+    docker:
+      - *ruby
+    steps:
+      - attach_workspace:
+          at: '~'
+      - run: bundle exec rbs -I sig test --double-suite rspec --target 'Tenios::Blocks*' --unchecked-class RSpec::Mocks::InstanceVerifyingDouble rake
+
 
   rubocop:
     working_directory: ~/tenios-ruby
@@ -52,3 +71,7 @@ workflows:
           requires: [bundle]
       - tests:
           requires: [bundle]
+      - rbs_validate:
+          requires: [bundle]
+      - rbs_test:
+          requires: [rbs_validate]

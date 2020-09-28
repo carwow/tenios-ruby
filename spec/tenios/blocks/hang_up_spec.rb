@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'securerandom'
 
 RSpec.describe Tenios::Blocks::HangUp do
-  let(:instance) { described_class.new(params) }
+  let(:instance) { described_class.new(**params) }
 
   let(:valid_params) { { cause: described_class::NO_ANSWER } }
 

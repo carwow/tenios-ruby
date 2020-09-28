@@ -1,11 +1,11 @@
 module Tenios
   class Blocks
     class CallSettings
-      BLOCK_TYPE: ::String
+      BLOCK_TYPE: String
 
-      def initialize: (forward_ani: untyped forward_ani) -> untyped
+      def initialize: (forward_ani: String forward_ani) -> CallSettings
 
-      def as_json: () -> { blockType: untyped, forwardAni: untyped }
+      def as_json: () -> { blockType: String, forwardAni: String }
     end
   end
 end
