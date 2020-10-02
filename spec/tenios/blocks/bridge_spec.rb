@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'securerandom'
 
 RSpec.describe Tenios::Blocks::Bridge do
-  let(:instance) { described_class.new(params) }
+  let(:instance) { described_class.new(**params) }
 
   describe 'block validations' do
     let(:params) do
