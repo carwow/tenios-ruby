@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'securerandom'
 
 RSpec.describe Tenios::Blocks::RoutingPlan do
-  let(:instance) { described_class.new(params) }
+  let(:instance) { described_class.new(**params) }
   let(:valid_params) { { routing_plan: SecureRandom.hex } }
 
   describe 'validations' do

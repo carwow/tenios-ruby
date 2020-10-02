@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Tenios::Blocks::CollectDigits do
-  let(:instance) { described_class.new(params) }
+  let(:instance) { described_class.new(**params) }
   let(:valid_params) do
     {
       announcement: 'announcement',

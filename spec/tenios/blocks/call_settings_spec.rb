@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Tenios::Blocks::CallSettings do
-  let(:instance) { described_class.new(params) }
+  let(:instance) { described_class.new(**params) }
   let(:valid_params) do
     {
       forward_ani: '+123'
