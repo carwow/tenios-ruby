@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler', '~> 2'
-  spec.add_development_dependency 'carwow_rubocop'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency "rake", "~> 13"
+  spec.add_development_dependency "rspec", "~> 3"
+  spec.add_development_dependency "standard", "~> 0.12"
 end
