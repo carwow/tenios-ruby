@@ -1,14 +1,40 @@
-version: 2
+version: 2.1
 
 jobs:
-  pass:
+  test:
+    parameters:
+      ruby_version:
+        type: string
     docker:
-      - image: alpine
+      - image: cimg/ruby:<< parameters.ruby_version >>
     steps:
-      - run: "true"
+      - checkout
+      - restore_cache:
+          keys:
+            - bundle-ruby-<< parameters.ruby_version >>-{{ checksum "tenios.gemspec" }}
+            - bundle-ruby-<< parameters.ruby_version >>
+      - run:
+          name: bundle update
+          command: |
+            bundle config --local path vendor/bundle
+            bundle update --jobs=4 --retry=3
+            bundle clean --force
+      - save_cache:
+          key: bundle-ruby-<< parameters.ruby_version >>-{{ checksum "tenios.gemspec" }}
+          paths: [~/project/vendor/bundle]
+      - run: bundle exec rubocop
+      - run: bundle exec rspec
 
 workflows:
   version: 2
-  build:
+  test:
     jobs:
-      - pass
+      - test:
+          matrix:
+            parameters:
+              ruby_version:
+                - "2.6"
+                - "2.7"
+                - "3.0"
+                - "3.1"
+                - "3.2"
