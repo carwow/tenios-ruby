@@ -3,7 +3,7 @@
 module Tenios
   class Blocks
     class CollectSpeech
-      BLOCK_TYPE = 'COLLECT_SPEECH'
+      BLOCK_TYPE = "COLLECT_SPEECH"
 
       def initialize(
         announcement:,
