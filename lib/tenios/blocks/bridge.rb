@@ -3,12 +3,12 @@
 module Tenios
   class Blocks
     class Bridge
-      BLOCK_TYPE = 'BRIDGE'
-      SEQUENTIAL = 'SEQUENTIAL'
-      PARALLEL = 'PARALLEL'
-      EXTERNAL_NUMBER = 'EXTERNALNUMBER'
-      SIP_USER = 'SIP_USER'
-      SIP_TRUNK = 'SIP_TRUNK'
+      BLOCK_TYPE = "BRIDGE"
+      SEQUENTIAL = "SEQUENTIAL"
+      PARALLEL = "PARALLEL"
+      EXTERNAL_NUMBER = "EXTERNALNUMBER"
+      SIP_USER = "SIP_USER"
+      SIP_TRUNK = "SIP_TRUNK"
 
       BRIDGE_MODES = [
         SEQUENTIAL,
@@ -27,17 +27,17 @@ module Tenios
         @destinations = []
 
         raise "mode must be one of #{BRIDGE_MODES}" unless BRIDGE_MODES.include?(@mode)
-        raise 'timeout is required' if parallel? && @timeout.nil?
-        raise 'timeout is not accepted in this mode' if sequential? && !@timeout.nil?
+        raise "timeout is required" if parallel? && @timeout.nil?
+        raise "timeout is not accepted in this mode" if sequential? && !@timeout.nil?
 
         yield(self) if block_given?
       end
 
       def with_destination(destination_type, destination, timeout = nil)
-        raise 'timeout is required' if sequential? && timeout.nil?
-        raise 'timeout is not accepted' if parallel? && !timeout.nil?
+        raise "timeout is required" if sequential? && timeout.nil?
+        raise "timeout is not accepted" if parallel? && !timeout.nil?
         raise "destination_type must be one of #{DESTINATION_TYPES}" unless DESTINATION_TYPES.include?(destination_type)
-        raise 'destination is required' if destination.strip.empty?
+        raise "destination is required" if destination.strip.empty?
 
         @destinations << {
           destinationType: destination_type,
@@ -49,7 +49,7 @@ module Tenios
       end
 
       def as_json(*)
-        raise 'no destinations' if @destinations.empty?
+        raise "no destinations" if @destinations.empty?
 
         {
           blockType: BLOCK_TYPE,

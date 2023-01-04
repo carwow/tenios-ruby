@@ -3,10 +3,10 @@
 module Tenios
   class Blocks
     class RoutingPlan
-      BLOCK_TYPE = 'ROUTINGPLAN'
+      BLOCK_TYPE = "ROUTINGPLAN"
 
       def initialize(routing_plan:)
-        raise 'routing_plan is required' if routing_plan.nil?
+        raise "routing_plan is required" if routing_plan.nil?
 
         @routing_plan = routing_plan
       end

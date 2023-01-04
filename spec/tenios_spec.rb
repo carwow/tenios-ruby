@@ -1,24 +1,24 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe Tenios do
-  describe '.blocks' do
-    it 'yields an instance of Tenios::Blocks' do
+  describe ".blocks" do
+    it "yields an instance of Tenios::Blocks" do
       expect { |b| described_class.blocks(&b) }.to yield_control.once
       expect { |b| described_class.blocks(&b) }.to yield_with_args(Tenios::Blocks)
     end
 
-    it 'return an instance of Tenios::Blocks' do
+    it "return an instance of Tenios::Blocks" do
       blocks = described_class.blocks {}
       expect(blocks).to be_a(Tenios::Blocks)
     end
 
-    it 'returns the yielded instance of Tenios::Blocks' do
-      yielded_blocks = described_class.blocks do |block|
-        block.announce(announcement: 'hello')
-      end
+    it "returns the yielded instance of Tenios::Blocks" do
+      yielded_blocks = described_class.blocks { |block|
+        block.announce(announcement: "hello")
+      }
 
       blocks = Tenios::Blocks.new
-      announcement = Tenios::Blocks::Announcement.new(announcement: 'hello')
+      announcement = Tenios::Blocks::Announcement.new(announcement: "hello")
 
       blocks.add(announcement)
 

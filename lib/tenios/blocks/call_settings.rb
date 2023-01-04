@@ -3,7 +3,7 @@
 module Tenios
   class Blocks
     class CallSettings
-      BLOCK_TYPE = 'CALL_SETTINGS'
+      BLOCK_TYPE = "CALL_SETTINGS"
 
       def initialize(forward_ani:)
         @forward_ani = forward_ani

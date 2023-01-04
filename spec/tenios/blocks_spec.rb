@@ -1,23 +1,23 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe Tenios::Blocks do
   let(:instance) { described_class.new }
 
-  describe '#add' do
+  describe "#add" do
     subject(:add) { instance.add(block) }
 
-    let(:block) { 'hello' }
+    let(:block) { "hello" }
 
-    it 'returns self' do
+    it "returns self" do
       expect(add).to be_a(described_class)
     end
   end
 
-  describe '#as_json' do
+  describe "#as_json" do
     subject(:json) { instance.as_json }
 
-    let(:block_1) { instance_double('Tenios::Blocks', as_json: 'block_1') }
-    let(:block_2) { instance_double('Tenios::Blocks', as_json: 'block_2') }
+    let(:block_1) { instance_double("Tenios::Blocks", as_json: "block_1") }
+    let(:block_2) { instance_double("Tenios::Blocks", as_json: "block_2") }
     let(:expected_json) do
       {
         blocks: %w[
@@ -27,7 +27,7 @@ RSpec.describe Tenios::Blocks do
       }
     end
 
-    it 'returns blocks' do
+    it "returns blocks" do
       instance
         .add(block_1)
         .add(block_2)
@@ -36,12 +36,12 @@ RSpec.describe Tenios::Blocks do
     end
   end
 
-  describe '#announce' do
-    it 'adds an announcement block' do
-      instance.announce(announcement: 'hello', standard: true)
+  describe "#announce" do
+    it "adds an announcement block" do
+      instance.announce(announcement: "hello", standard: true)
 
       announcement = Tenios::Blocks::Announcement.new(
-        announcement: 'hello',
+        announcement: "hello",
         standard: true
       )
 
@@ -52,11 +52,11 @@ RSpec.describe Tenios::Blocks do
     end
   end
 
-  describe '#bridge' do
-    it 'adds a bridge block' do
+  describe "#bridge" do
+    it "adds a bridge block" do
     end
 
-    it 'yields an instance of Tenios::Blocks::Bridge' do
+    it "yields an instance of Tenios::Blocks::Bridge" do
       expect { |b| instance.bridge(mode: Tenios::Blocks::Bridge::SEQUENTIAL, &b) }
         .to yield_control.once
 
@@ -65,14 +65,14 @@ RSpec.describe Tenios::Blocks do
     end
   end
 
-  describe '#call_settings' do
-    it 'adds a call_settings block' do
+  describe "#call_settings" do
+    it "adds a call_settings block" do
       instance.call_settings(
-        forward_ani: '+123'
+        forward_ani: "+123"
       )
 
       call_settings = Tenios::Blocks::CallSettings.new(
-        forward_ani: '+123'
+        forward_ani: "+123"
       )
 
       blocks = described_class.new
@@ -82,30 +82,30 @@ RSpec.describe Tenios::Blocks do
     end
   end
 
-  describe '#collect_digits' do
-    it 'adds a collect_digits block' do
+  describe "#collect_digits" do
+    it "adds a collect_digits block" do
       instance.collect_digits(
-        announcement: 'announcement',
+        announcement: "announcement",
         standard_announcement: true,
-        error_announcement: 'error_announcement',
+        error_announcement: "error_announcement",
         standard_error_announcement: false,
-        variable: 'variable',
+        variable: "variable",
         min_digits: 1,
         max_digits: 32,
-        terminator: '#',
+        terminator: "#",
         max_tries: 10,
         timeout: 300
       )
 
       collect_digits = Tenios::Blocks::CollectDigits.new(
-        announcement: 'announcement',
+        announcement: "announcement",
         standard_announcement: true,
-        error_announcement: 'error_announcement',
+        error_announcement: "error_announcement",
         standard_error_announcement: false,
-        variable: 'variable',
+        variable: "variable",
         min_digits: 1,
         max_digits: 32,
-        terminator: '#',
+        terminator: "#",
         max_tries: 10,
         timeout: 300
       )
@@ -117,12 +117,12 @@ RSpec.describe Tenios::Blocks do
     end
   end
 
-  describe '#collect_speech' do
+  describe "#collect_speech" do
     pending
   end
 
-  describe '#hang_up' do
-    it 'adds a hang_up block' do
+  describe "#hang_up" do
+    it "adds a hang_up block" do
       instance.hang_up(cause: Tenios::Blocks::HangUp::NO_ANSWER)
 
       hang_up = Tenios::Blocks::HangUp.new(
@@ -136,12 +136,12 @@ RSpec.describe Tenios::Blocks do
     end
   end
 
-  describe '#routing_plan' do
-    it 'adds a routing_plan block' do
-      instance.routing_plan(routing_plan: 'hello')
+  describe "#routing_plan" do
+    it "adds a routing_plan block" do
+      instance.routing_plan(routing_plan: "hello")
 
       routing_plan = Tenios::Blocks::RoutingPlan.new(
-        routing_plan: 'hello'
+        routing_plan: "hello"
       )
 
       blocks = described_class.new
@@ -151,13 +151,13 @@ RSpec.describe Tenios::Blocks do
     end
   end
 
-  describe '#say' do
-    it 'adds a say block' do
-      instance.say(text: 'hello', voice: 'voice', ssml: false)
+  describe "#say" do
+    it "adds a say block" do
+      instance.say(text: "hello", voice: "voice", ssml: false)
 
       say = Tenios::Blocks::Say.new(
-        text: 'hello',
-        voice: 'voice',
+        text: "hello",
+        voice: "voice",
         ssml: false
       )
 

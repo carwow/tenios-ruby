@@ -3,7 +3,7 @@
 module Tenios
   class Blocks
     class Announcement
-      BLOCK_TYPE = 'ANNOUNCEMENT'
+      BLOCK_TYPE = "ANNOUNCEMENT"
 
       def initialize(announcement:, standard: false)
         @announcement = announcement

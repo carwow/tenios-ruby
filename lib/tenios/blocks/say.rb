@@ -3,7 +3,7 @@
 module Tenios
   class Blocks
     class Say
-      BLOCK_TYPE = 'SAY'
+      BLOCK_TYPE = "SAY"
 
       def initialize(text:, voice:, ssml:)
         @text = text
@@ -25,8 +25,8 @@ module Tenios
       private
 
       def validate!
-        raise 'text is required' if @text.nil?
-        raise 'voice is required' if @voice.nil?
+        raise "text is required" if @text.nil?
+        raise "voice is required" if @voice.nil?
       end
     end
   end
